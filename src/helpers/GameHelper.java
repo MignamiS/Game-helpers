@@ -17,7 +17,7 @@ public class GameHelper {
 	 *            the angle, in degrees
 	 * @return x-component
 	 */
-	public static float lengthdir_x(final float len, final float angle) {
+	public static float lengthDirX(final float len, final float angle) {
 		return (float) (Math.cos(angle * (Math.PI / 180)) * len);
 	}
 
@@ -30,7 +30,7 @@ public class GameHelper {
 	 *            the angle, in degrees
 	 * @return y-component
 	 */
-	public static float lengthdir_y(final float len, final float angle) {
+	public static float lengthDirY(final float len, final float angle) {
 		return (float) (Math.sin(angle * (Math.PI / 180)) * len);
 	}
 

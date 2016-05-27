@@ -11,20 +11,20 @@ public class GameHelperTest {
 	public void testLengthDir() {
 		int len = 10;
 		int dir = 0;
-		float x = lengthdir_x(len, dir);
+		float x = lengthDirX(len, dir);
 		assertEquals(len, x, 0.1f);
-		float y = lengthdir_y(len, dir);
+		float y = lengthDirY(len, dir);
 		assertEquals(0, y, 0.1f);
 
 		dir = 90;
-		x = lengthdir_x(len, dir);
-		y = lengthdir_y(len, dir);
+		x = lengthDirX(len, dir);
+		y = lengthDirY(len, dir);
 		assertEquals(0, x, 0.1f);
 		assertEquals(len, y, 0.1f);
 
 		dir = 180;
-		x = lengthdir_x(len, dir);
-		y = lengthdir_y(len, dir);
+		x = lengthDirX(len, dir);
+		y = lengthDirY(len, dir);
 		assertEquals(-len, x, 0.1f);
 		assertEquals(0, y, 0.1f);
 	}
