@@ -34,10 +34,35 @@ public class GameHelper {
 		return (float) (Math.sin(angle * (Math.PI / 180)) * len);
 	}
 
+	/**
+	 * Snaps the given coordinate to the nearest grid cross. This is suitable
+	 * for moving something using the mouse cursor, because the mouse pointer
+	 * stays centered on it.
+	 * 
+	 * @param coord
+	 *            the coord to snap
+	 * @param size
+	 *            the grid cell size
+	 * @return the snapped coordinate
+	 */
 	public static int snapToGrid(final float coord, final int size) {
 		final int XX = (int) (coord + (size / 2));
 		final int timesX = Math.round(XX / size);
 		return size * timesX;
+	}
+
+	/**
+	 * Like {@link #snapToGrid(float, int)}, but the coord is centered on the
+	 * center of the cell and not on the cross
+	 * 
+	 * @param coord
+	 *            the coordinate
+	 * @param size
+	 *            the grid cell size
+	 * @return the snapped coordinate
+	 */
+	public static int snapToGridCell(final float coord, final int size) {
+		return Math.round((coord + size / 2) / size) * size - (size / 2);
 
 	}
 
