@@ -38,7 +38,7 @@ public class GameHelper {
 	 * Snaps the given coordinate to the nearest grid cross. This is suitable
 	 * for moving something using the mouse cursor, because the mouse pointer
 	 * stays centered on it.
-	 * 
+	 *
 	 * @param coord
 	 *            the coord to snap
 	 * @param size
@@ -54,7 +54,7 @@ public class GameHelper {
 	/**
 	 * Like {@link #snapToGrid(float, int)}, but the coord is centered on the
 	 * center of the cell and not on the cross
-	 * 
+	 *
 	 * @param coord
 	 *            the coordinate
 	 * @param size
@@ -97,5 +97,43 @@ public class GameHelper {
 			while (angle < 0)
 				angle += 360;
 		return angle;
+	}
+
+	/**
+	 * Returns the bounding box of the given 2D set of points coordinates.
+	 * 
+	 * @param points
+	 *            an array of coordinates such as [x1, y1, x2, y2, ...].
+	 *            Providing less than 2 points results in an exception.
+	 * @return the 2 points of the bounding box, such as [x_min, y_min, x_max,
+	 *         y_max]
+	 */
+	public static int[] boundingBox(final int[] points) {
+		// check each point has a couple of coordinates
+		if (points.length < 4 || points.length % 2 != 0)
+			throw new IllegalArgumentException(
+					"Wrong number of points or coordinates");
+
+		int xMax = Integer.MIN_VALUE;
+		int yMax = Integer.MIN_VALUE;
+		int xMin = Integer.MAX_VALUE;
+		int yMin = Integer.MAX_VALUE;
+		for (int i = 0; i < points.length - 1; i += 2) {
+			// x coord
+			final int x = points[i];
+			if (x > xMax)
+				xMax = x;
+			if (x < xMin)
+				xMin = x;
+			// y coord
+			final int y = points[i + 1];
+			if (y > yMax)
+				yMax = y;
+			if (y < yMin)
+				yMin = y;
+		}
+
+		final int[] box = { xMin, yMin, xMax, yMax };
+		return box;
 	}
 }

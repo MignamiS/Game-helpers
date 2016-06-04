@@ -2,14 +2,17 @@ package helpers;
 
 import static org.junit.Assert.*;
 
+import helpers.GameHelper;
+
 import org.junit.Test;
+
 import static helpers.GameHelper.*;
 
 public class GameHelperTest {
 
 	@Test
 	public void testLengthDir() {
-		int len = 10;
+		final int len = 10;
 		int dir = 0;
 		float x = lengthDirX(len, dir);
 		assertEquals(len, x, 0.1f);
@@ -47,6 +50,24 @@ public class GameHelperTest {
 		y2 = 1;
 		dir = (float) pointDirection(x1, y1, x2, y2);
 		assertEquals(135, dir, 1);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void textboundingBoxException() {
+		final int[] p = { 1, 2, 3 };
+		GameHelper.boundingBox(p);
+	}
+
+	@Test
+	public void testBoundingBox() {
+		final int[] pp = { 0, 1, 1, 0 };
+		final int[] r = GameHelper.boundingBox(pp);
+		String got = "";
+		for (int i = 0; i < r.length; i++) {
+			got += r[i];
+		}
+		final String exp = "0011";
+		assertTrue(exp.equals(got));
 	}
 
 }
