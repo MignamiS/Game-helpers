@@ -11,6 +11,24 @@ import static helpers.GameHelper.*;
 public class GameHelperTest {
 
 	@Test
+	public void testScaleAspectRatio() {
+		// from 400 to 100 (25%)
+		int w = 400;
+		int h = 100;
+		final int canvas = 100;
+		assertEquals(0.25f, GameHelper.scaleAspectRatio(w, h, canvas), 0.0f);
+
+		// from 50 to 100 (200%)
+		w = 50;
+		h = 50;
+		assertEquals(2f, GameHelper.scaleAspectRatio(w, h, canvas), 0.0f);
+
+		// from 100 to 100 (100%)
+		h = 100;
+		assertEquals(1f, GameHelper.scaleAspectRatio(w, h, canvas), 0.0f);
+	}
+
+	@Test
 	public void testLengthDir() {
 		final int len = 10;
 		int dir = 0;
