@@ -28,7 +28,7 @@ Feature summary:
 Suppose you have an helicopter with a gun, and that gun can rotate. When you hit the Fire key, where do you put the bullet? Of course, not at the center of the gun (usually the 0,0 coordinates...right? RIGHT?).
 To put the bullet at the end of the gun you need just its length and direction and with the lengthdir_x/y you can get the (x,y) coordinates of the starting point.
 
-** Point direction**
+**Point direction**
 
 Given two points, returns the angle. It uses the standard trigonometric values, where the zero is right, 90° is up and 270° is bottom.
 
